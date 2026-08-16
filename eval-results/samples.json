@@ -17,14 +17,14 @@
           "hintChars": 0, "source": "第一轮完的测试.docx + echo-cap-calls.log 13:25:54Z（judgment 标签为 2026-08-16 按代码复核值）"
         },
         {
-          "group": "C", "round": 1, "date": "2026-08-16",
+          "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["echo"],
-          "hintChars": 0, "source": "子代理探针 01:23Z + echo-cap-calls.log 01:23:09Z（子会话注入同样生效）"
+          "hintChars": 0, "source": "子代理探针 01:23Z + echo-cap-calls.log 01:23:09Z（2026-08-16 修正：子会话不接收注入，此运行实为无提示环境 → 归 B 组）"
         },
         {
           "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["echo"],
-          "hintChars": 0, "source": "B 组探针 01:36Z + echo-cap-calls.log 01:36:19Z（无提示仍调 echo → B≈C）"
+          "hintChars": 0, "source": "B 组探针 01:36Z + echo-cap-calls.log 01:36:19Z（patch 关闭期，无提示仍调 echo）"
         }
       ]
     },
@@ -74,14 +74,14 @@
       "groundTruth": { "shouldUse": [], "neverPush": ["workflow", "subagent", "todo_write"] },
       "runs": [
         {
-          "group": "C", "round": 1, "date": "2026-08-16",
+          "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["write"],
-          "hintChars": 0, "source": "子代理探针 01:24Z（原创力扣题并写入工作区文件，探针后已清理；未推 workflow/subagent ✓）"
+          "hintChars": 0, "source": "子代理探针 01:24Z（2026-08-16 修正：子会话无注入 → 归 B 组；原创力扣题写入文件后清理；未推重型工具）"
         },
         {
           "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["write"],
-          "hintChars": 0, "source": "B 组探针 01:38Z（原创力扣题写入文件 k-covered-length.md，已清理；未推重型工具 → B≈C）"
+          "hintChars": 0, "source": "B 组探针 01:38Z（原创力扣题写入文件 k-covered-length.md，已清理；未推重型工具）"
         }
       ]
     },
@@ -93,14 +93,14 @@
       "groundTruth": { "shouldUse": [], "neverPush": ["echo"] },
       "runs": [
         {
-          "group": "C", "round": 1, "date": "2026-08-16",
+          "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": [],
-          "hintChars": 0, "source": "子代理探针 01:24Z（T3 生产首测：模型澄清询问，未调任何工具 → 软层兜底无误触发 ✓，遗留项2 关闭）"
+          "hintChars": 0, "source": "子代理探针 01:24Z（2026-08-16 修正：子会话无注入 → 归 B 组；T3 判定、澄清询问零工具，误触发 0）"
         },
         {
           "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": [],
-          "hintChars": 0, "source": "B 组探针 01:39Z（澄清询问零工具 → B≈C）"
+          "hintChars": 0, "source": "B 组探针 01:39Z（澄清询问零工具）"
         }
       ]
     },
@@ -113,16 +113,21 @@
       "note": "扩库前（2026-08-16 前）库内无拼接工具 → 真值 shouldUse 为空；demo-cap 扩容后 concat_text 入库 → 真值更新为 [concat_text]（第二轮起适用）。",
       "runs": [
         {
-          "group": "C", "round": 1, "date": "2026-08-16",
+          "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T2", "pushed": [], "used": [],
           "truth": { "shouldUse": [], "neverPush": ["workflow", "subagent"] },
-          "hintChars": 0, "source": "子代理探针 01:23Z（T2 命中但库内无对应工具 → 无命中总览；模型直接拼接返回 abcdef，符合预期）"
+          "hintChars": 0, "source": "子代理探针 01:23Z（2026-08-16 修正：子会话无注入 → 归 B 组；旧库无工具，直接拼接符合预期）"
         },
         {
           "group": "B", "round": 1, "date": "2026-08-16",
           "judgment": "T2", "pushed": [], "used": [],
           "truth": { "shouldUse": [], "neverPush": ["workflow", "subagent"] },
-          "hintChars": 0, "source": "B 组探针 01:39Z（直接拼接返回 abcdef，零工具 → B≈C）"
+          "hintChars": 0, "source": "B 组探针 01:39Z（旧库无工具，直接拼接返回 abcdef）"
+        },
+        {
+          "group": "B", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "hintChars": 0, "source": "R2 探针（重启后新库含 concat_text；子会话无注入 → B 类；模型仍直接拼接，未发现新工具 → 第二轮假设证据）"
         }
       ]
     },
@@ -133,7 +138,13 @@
       "expected": "T2",
       "groundTruth": { "shouldUse": ["format_text"], "neverPush": ["concat_text", "batch_transform"] },
       "note": "第二轮新增样本（2026-08-16 扩库时入库）：格式化类，落点 format_text。",
-      "runs": []
+      "runs": [
+        {
+          "group": "B", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "hintChars": 0, "source": "R2 探针（重启后新库；子会话无注入 → B 类；模型心算转换 ABC 未用 format_text → 第二轮假设证据）"
+        }
+      ]
     },
     {
       "id": "S9",
@@ -141,8 +152,15 @@
       "type": "pos",
       "expected": "T2",
       "groundTruth": { "shouldUse": ["batch_transform"], "neverPush": ["echo"] },
-      "note": "第二轮新增样本（2026-08-16 扩库时入库）：批量类，落点 batch_transform。",
-      "runs": []
+      "note": "第二轮新增样本（2026-08-16 扩库时入库）：批量类，落点 batch_transform。2026-08-16 R2 实测修正：batch_transform 是字符串列表变换，对真实文件重命名不适用 → 该样本 R2 真值应为 []（模型澄清/用 pwsh 属正确判断）。",
+      "runs": [
+        {
+          "group": "B", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "truth": { "shouldUse": [], "neverPush": ["echo"] },
+          "hintChars": 0, "source": "R2 探针（子会话无注入 → B 类；模型要求澄清文件清单，判断 batch_transform 不适用 → 真值修正为 []）"
+        }
+      ]
     },
     {
       "id": "S10",
@@ -151,7 +169,13 @@
       "expected": "T2",
       "groundTruth": { "shouldUse": ["concat_text", "format_text"], "neverPush": ["batch_transform"] },
       "note": "第二轮新增样本（2026-08-16 扩库时入库）：复合任务，双落点。",
-      "runs": []
+      "runs": [
+        {
+          "group": "B", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "hintChars": 0, "source": "R2 探针（子会话无注入 → B 类；模型心算 ABCDEF 未用任何新工具 → 第二轮假设证据）"
+        }
+      ]
     },
     {
       "id": "S7",
