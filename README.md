@@ -13,7 +13,7 @@ dsh-capability-index 是 DeepSeek Harness (dsh) 的元插件：让 agent 对自�
 - 零侵入：通过 dsh 原生 runtime-context 通道注入，提示只在内容变化时替换、不逐轮堆积
 - 状态：v0 雏形，中文词表起步，实验调优进行中；兼容 dsh developer preview 版本
 
-## 设计初衷（作者原话）
+## 设计初衷
 
 > 以下话语是我的一些原始设计想法，尽量保留原样：
 >
@@ -185,3 +185,5 @@ GitHub Discussions / Discord 社区用于反馈与曝光。
   实测校准只改数据文件；
 - **贡献**：欢迎提交能力声明、词表扩充、样本与反馈；dsh 尚处 developer preview，
   正式版可能有兼容变化。
+
+欢迎大家在discussion里面交流和反馈以及互动
