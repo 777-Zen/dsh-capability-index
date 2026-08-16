@@ -1,4 +1,4 @@
-/**
+﻿/**
  * dsh-capability-index —— 离线模拟器（阶段二）。
  *
  * 不依赖运行实例：直接调用 evaluate + rankTop，用 demo-cap 的声明与工具

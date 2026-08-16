@@ -1,4 +1,4 @@
-/**
+﻿/**
  * dsh-capability-index —— 实验评分脚本（阶段二，零依赖纯 ESM）。
  *
  * 用法：node eval-metrics.mjs [--json]
@@ -35,9 +35,10 @@ function callRate(runs) {
 
 // ---- 指标 2：误触发（两向）----
 // 漏推只对 T2 硬层样本计数（T3/none 走软层总览，无 Top-K 是设计行为——
-// 模型从总览找到工具属于调用率口径，不算漏推）。
+// 模型从总览找到工具属于调用率口径，不算漏推），且只对 C 组有效
+// （B 组无注入机制，pushed 恒为空，"漏推"不适用）。
 function falseTrigger(runs) {
-  let missPush = 0 // 该推没推：T2 样本的 shouldUse 工具一个都没进 pushed
+  let missPush = 0 // 该推没推：C 组 T2 样本的 shouldUse 工具一个都没进 pushed
   let badPush = 0 // 不该推却推：neverPush 工具进了 pushed
   const missDetails = []
   const badDetails = []
@@ -45,7 +46,7 @@ function falseTrigger(runs) {
     const should = r._shouldUse ?? []
     const never = r._neverPush ?? []
     const pushed = r.pushed ?? []
-    if (r._expected === 'T2' && should.length > 0 && !should.some(t => pushed.includes(t))) {
+    if (r.group === 'C' && r._expected === 'T2' && should.length > 0 && !should.some(t => pushed.includes(t))) {
       missPush += 1
       missDetails.push(`${r._id}:该推没推(${should.join('/')})→推了[${pushed.join(',') || '无'}]`)
     }
@@ -61,6 +62,7 @@ function falseTrigger(runs) {
 
 // ---- 指标 3：上下文增量（hintChars 实测优先，缺省估算）----
 function estimateHintChars(run) {
+  if (run.group === 'B') return 0 // B 组无注入，增量恒为 0
   if (typeof run.hintChars === 'number' && run.hintChars > 0) return run.hintChars
   const j = run.judgment
   if (j === 'T2') {

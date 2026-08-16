@@ -20,6 +20,11 @@
           "group": "C", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["echo"],
           "hintChars": 0, "source": "子代理探针 01:23Z + echo-cap-calls.log 01:23:09Z（子会话注入同样生效）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": ["echo"],
+          "hintChars": 0, "source": "B 组探针 01:36Z + echo-cap-calls.log 01:36:19Z（无提示仍调 echo → B≈C）"
         }
       ]
     },
@@ -34,6 +39,11 @@
           "group": "C", "round": 1, "date": "2026-08-15",
           "judgment": "T2", "pushed": ["read", "todo_write", "workflow"], "used": ["glob", "read"],
           "hintChars": 0, "source": "第一轮完的测试.docx（模型用 glob+3×read 整理成表）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": ["glob", "read"],
+          "hintChars": 0, "source": "B 组探针 01:37Z（无提示仍用 glob+read 读全 3 个 README 整理成表 → B≈C）"
         }
       ]
     },
@@ -48,6 +58,11 @@
           "group": "C", "round": 1, "date": "2026-08-15",
           "judgment": "none", "pushed": [], "used": [],
           "hintChars": 0, "source": "第一轮完的测试.docx（闲聊回应，无误触发）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "none", "pushed": [], "used": [],
+          "hintChars": 0, "source": "B 组探针 01:37Z（闲聊回应零工具 → B≈C）"
         }
       ]
     },
@@ -62,6 +77,11 @@
           "group": "C", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": ["write"],
           "hintChars": 0, "source": "子代理探针 01:24Z（原创力扣题并写入工作区文件，探针后已清理；未推 workflow/subagent ✓）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": ["write"],
+          "hintChars": 0, "source": "B 组探针 01:38Z（原创力扣题写入文件 k-covered-length.md，已清理；未推重型工具 → B≈C）"
         }
       ]
     },
@@ -76,6 +96,11 @@
           "group": "C", "round": 1, "date": "2026-08-16",
           "judgment": "T3", "pushed": [], "used": [],
           "hintChars": 0, "source": "子代理探针 01:24Z（T3 生产首测：模型澄清询问，未调任何工具 → 软层兜底无误触发 ✓，遗留项2 关闭）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": [],
+          "hintChars": 0, "source": "B 组探针 01:39Z（澄清询问零工具 → B≈C）"
         }
       ]
     },
@@ -92,6 +117,12 @@
           "judgment": "T2", "pushed": [], "used": [],
           "truth": { "shouldUse": [], "neverPush": ["workflow", "subagent"] },
           "hintChars": 0, "source": "子代理探针 01:23Z（T2 命中但库内无对应工具 → 无命中总览；模型直接拼接返回 abcdef，符合预期）"
+        },
+        {
+          "group": "B", "round": 1, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "truth": { "shouldUse": [], "neverPush": ["workflow", "subagent"] },
+          "hintChars": 0, "source": "B 组探针 01:39Z（直接拼接返回 abcdef，零工具 → B≈C）"
         }
       ]
     },
