@@ -128,6 +128,11 @@
           "group": "B", "round": 2, "date": "2026-08-16",
           "judgment": "T2", "pushed": [], "used": [],
           "hintChars": 0, "source": "R2 探针（重启后新库含 concat_text；子会话无注入 → B 类；模型仍直接拼接，未发现新工具 → 第二轮假设证据）"
+        },
+        {
+          "group": "C", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": ["concat_text", "pwsh", "cordis_inspect_query"], "used": ["concat_text"],
+          "hintChars": 0, "source": "用户主会话实测（快照：Top-1 concat_text 带适用/不适用声明；模型真实调用 concat_text → abcdef。B 组同消息零工具 → 提示改变行为 ✓）"
         }
       ]
     },
@@ -143,6 +148,11 @@
           "group": "B", "round": 2, "date": "2026-08-16",
           "judgment": "T2", "pushed": [], "used": [],
           "hintChars": 0, "source": "R2 探针（重启后新库；子会话无注入 → B 类；模型心算转换 ABC 未用 format_text → 第二轮假设证据）"
+        },
+        {
+          "group": "C", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": ["format_text", "write", "edit"], "used": ["format_text"],
+          "hintChars": 0, "source": "用户主会话实测（快照：Top-1 format_text 带声明；模型真实调用 format_text(mode=upper) → ABC。B 组同消息零工具 → 提示改变行为 ✓）"
         }
       ]
     },
@@ -159,6 +169,12 @@
           "judgment": "T2", "pushed": [], "used": [],
           "truth": { "shouldUse": [], "neverPush": ["echo"] },
           "hintChars": 0, "source": "R2 探针（子会话无注入 → B 类；模型要求澄清文件清单，判断 batch_transform 不适用 → 真值修正为 []）"
+        },
+        {
+          "group": "C", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": ["batch_transform", "pwsh", "read"], "used": [],
+          "truth": { "shouldUse": [], "neverPush": ["echo"] },
+          "hintChars": 0, "source": "用户主会话实测（快照：Top-1 batch_transform 带声明；模型正确判断其不适用真实文件重命名 → 未调用，改用 pwsh 澄清执行路径 → 误触发 0、判断正确 ✓）"
         }
       ]
     },
@@ -174,6 +190,11 @@
           "group": "B", "round": 2, "date": "2026-08-16",
           "judgment": "T2", "pushed": [], "used": [],
           "hintChars": 0, "source": "R2 探针（子会话无注入 → B 类；模型心算 ABCDEF 未用任何新工具 → 第二轮假设证据）"
+        },
+        {
+          "group": "C", "round": 2, "date": "2026-08-16",
+          "judgment": "T2", "pushed": ["concat_text", "format_text", "write"], "used": ["concat_text", "format_text"],
+          "hintChars": 0, "source": "用户主会话实测（快照：Top-2 concat_text+format_text 均带声明；模型依次真实调用两工具 → ABCDEF。B 组同消息零工具 → 提示改变行为 ✓）"
         }
       ]
     },
