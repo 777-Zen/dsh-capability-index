@@ -186,4 +186,4 @@ GitHub Discussions / Discord 社区用于反馈与曝光。
 - **贡献**：欢迎提交能力声明、词表扩充、样本与反馈；dsh 尚处 developer preview，
   正式版可能有兼容变化。
 
-欢迎大家在discussion里面交流和反馈以及互动
+欢迎大家在GitHub Discussions里面交流和反馈以及互动
