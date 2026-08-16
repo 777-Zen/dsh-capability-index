@@ -22,11 +22,15 @@
 ## 验证流水线
 
 ```powershell
-pnpm dsh plugin --profile web add D:\dsh-lab\dsh-tool-demo-cap
+# 安装到 dsh（<path> 换成本样例插件目录的绝对路径，仓库内即 examples\dsh-tool-demo-cap）
+pnpm dsh plugin --profile web add <path>\dsh-tool-demo-cap
 pnpm dsh --profile web --dump-config | Select-String tool-demo-cap
 # 重启 web 应用；会话里发"帮我原样回显一句话"类消息，
 # 观察 dsh-capability-index 提示块是否推荐对应工具且带能力声明
 ```
+
+调用日志默认写当前工作目录的 `echo-cap-calls.log`（可用 `config.logPath`
+覆盖，见 `lib/index.js` 注释），用于对照实验的 `tool/call` 真值核验。
 
 ## 文件
 

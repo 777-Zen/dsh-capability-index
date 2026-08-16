@@ -6,7 +6,8 @@
  *   - concat_text：多段文本拼接（S6"把 'abc' 和 'def' 拼接一下"的落点）
  *   - format_text：文本格式化（大小写/trim/空白折叠）
  *   - batch_transform：对列表项批量应用同一变换
- * 全部工具调用写 D:\dsh-lab\echo-cap-calls.log（tool/call 实验证据）。
+ * 全部工具调用写当前工作目录下的 echo-cap-calls.log（tool/call 实验证据；
+ * 路径可用 config.logPath 覆盖，默认跨平台、开箱即用）。
  *
  * 能力声明：ctx.provide('capabilityIndex.declarations', …) 按
  * dsh-capability-index 的约定发布；消费者命中时集中渲染 use_when/not_for。
@@ -14,16 +15,18 @@
  */
 
 import { appendFileSync } from 'node:fs'
+import path from 'node:path'
 
 export const name = 'tool-demo-cap'
 export const inject = ['tools']
 
-const LOG_PATH = 'D:\\dsh-lab\\echo-cap-calls.log'
+// 默认日志文件名；经 path.resolve 落到当前工作目录，可用 config.logPath 覆盖。
+const DEFAULT_LOG_NAME = 'echo-cap-calls.log'
 
 /** 记录一次调用；日志失败（无权限等）不影响工具本身返回。 */
-function recordCall(tool, args, result) {
+function recordCall(logPath, tool, args, result) {
   try {
-    appendFileSync(LOG_PATH, `[${new Date().toISOString()}] ${tool}(${JSON.stringify(args)}) -> ${JSON.stringify(result)}\n`, 'utf8')
+    appendFileSync(logPath, `[${new Date().toISOString()}] ${tool}(${JSON.stringify(args)}) -> ${JSON.stringify(result)}\n`, 'utf8')
   } catch {
     // 静默：日志是辅助验证，不是工具职责
   }
@@ -77,6 +80,11 @@ export function apply(ctx, config = {}) {
   const suffix = typeof config === 'object' && config !== null && typeof config.suffix === 'string'
     ? config.suffix
     : ''
+  const logPath = path.resolve(
+    typeof config === 'object' && config !== null && typeof config.logPath === 'string' && config.logPath
+      ? config.logPath
+      : DEFAULT_LOG_NAME,
+  )
 
   // ---- echo：冒烟回显 ----
   ctx.tools.register({
@@ -108,7 +116,7 @@ export function apply(ctx, config = {}) {
     async execute(args) {
       const text = str(args?.text)
       const result = { text: `${text}${suffix}` }
-      recordCall('echo', { text }, result)
+      recordCall(logPath, 'echo', { text }, result)
       return result
     },
   })
@@ -149,7 +157,7 @@ export function apply(ctx, config = {}) {
       const parts = strArr(args?.parts)
       const separator = str(args?.separator)
       const result = { text: parts.join(separator) }
-      recordCall('concat_text', { parts, separator }, result)
+      recordCall(logPath, 'concat_text', { parts, separator }, result)
       return result
     },
   })
@@ -196,7 +204,7 @@ export function apply(ctx, config = {}) {
       else if (mode === 'trim') out = text.trim()
       else if (mode === 'collapse') out = text.replace(/\s+/g, ' ').trim()
       const result = { text: out }
-      recordCall('format_text', { text, mode }, result)
+      recordCall(logPath, 'format_text', { text, mode }, result)
       return result
     },
   })
@@ -251,7 +259,7 @@ export function apply(ctx, config = {}) {
         return item
       })
       const result = { items: out }
-      recordCall('batch_transform', { items, op, arg }, result)
+      recordCall(logPath, 'batch_transform', { items, op, arg }, result)
       return result
     },
   })
