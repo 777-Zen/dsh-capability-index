@@ -1,0 +1,6 @@
+# dsh-tool-demo-cap bundle patch — same shape as dsh-tool-demo, row renamed.
+- insert:
+    - id: tool-demo-cap
+      name: 'dsh-tool-demo-cap'
+      config:
+        suffix: ' (from profile config, cap)'

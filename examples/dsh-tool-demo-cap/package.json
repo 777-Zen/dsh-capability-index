@@ -1,0 +1,21 @@
+{
+  "name": "dsh-tool-demo-cap",
+  "version": "0.1.0",
+  "description": "Demo dsh profile bundle with a capabilities declaration: same echo tool as dsh-tool-demo, plus ctx.provide('capabilityIndex.declarations', ...) for the dsh-capability-index plugin",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

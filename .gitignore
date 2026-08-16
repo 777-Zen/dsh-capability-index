@@ -1,0 +1,13 @@
+# dependencies / local store
+node_modules/
+.pnpm-store/
+
+# runtime logs
+*.log
+
+# local sandbox mirror
+testhome/
+
+# editor/OS noise
+.DS_Store
+Thumbs.db

@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "updated": "2026-08-16",
+  "note": "活样本库。runs 逐条追加（含日期、消息原文、实际判定、正确判定、提示块推了谁、实际调了谁）。真值信 tool/call 日志与快照，不信总结。",
+  "samples": [
+    {
+      "id": "S1",
+      "text": "帮我原样回显一句话",
+      "type": "pos",
+      "expected": "T3",
+      "groundTruth": { "shouldUse": ["echo"], "neverPush": ["write", "edit", "workflow", "subagent"] },
+      "note": "2026-08-16 复核修正：原记录 expected T2 有误——消息无具体载体（c/d/f 全 false）→ 按代码路径为 T3 软层兜底；echo 实际被调用（日志铁证）不受影响。",
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-15",
+          "judgment": "T3", "pushed": [], "used": ["echo"],
+          "hintChars": 0, "source": "第一轮完的测试.docx + echo-cap-calls.log 13:25:54Z（judgment 标签为 2026-08-16 按代码复核值）"
+        },
+        {
+          "group": "C", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": ["echo"],
+          "hintChars": 0, "source": "子代理探针 01:23Z + echo-cap-calls.log 01:23:09Z（子会话注入同样生效）"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "帮我读一下 README.md 然后整理",
+      "type": "pos",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["read", "glob"], "neverPush": [] },
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-15",
+          "judgment": "T2", "pushed": ["read", "todo_write", "workflow"], "used": ["glob", "read"],
+          "hintChars": 0, "source": "第一轮完的测试.docx（模型用 glob+3×read 整理成表）"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "今天天气不错",
+      "type": "neg",
+      "expected": "none",
+      "groundTruth": { "shouldUse": [], "neverPush": [] },
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-15",
+          "judgment": "none", "pushed": [], "used": [],
+          "hintChars": 0, "source": "第一轮完的测试.docx（闲聊回应，无误触发）"
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "帮我写一道力扣题",
+      "type": "neg",
+      "expected": "none-or-light",
+      "groundTruth": { "shouldUse": [], "neverPush": ["workflow", "subagent", "todo_write"] },
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": ["write"],
+          "hintChars": 0, "source": "子代理探针 01:24Z（原创力扣题并写入工作区文件，探针后已清理；未推 workflow/subagent ✓）"
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "我想做个大项目",
+      "type": "neg",
+      "expected": "T3",
+      "groundTruth": { "shouldUse": [], "neverPush": ["echo"] },
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-16",
+          "judgment": "T3", "pushed": [], "used": [],
+          "hintChars": 0, "source": "子代理探针 01:24Z（T3 生产首测：模型澄清询问，未调任何工具 → 软层兜底无误触发 ✓，遗留项2 关闭）"
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "text": "把 'abc' 和 'def' 拼接一下",
+      "type": "mid",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["concat_text"], "neverPush": ["workflow", "subagent"] },
+      "note": "扩库前（2026-08-16 前）库内无拼接工具 → 真值 shouldUse 为空；demo-cap 扩容后 concat_text 入库 → 真值更新为 [concat_text]（第二轮起适用）。",
+      "runs": [
+        {
+          "group": "C", "round": 1, "date": "2026-08-16",
+          "judgment": "T2", "pushed": [], "used": [],
+          "truth": { "shouldUse": [], "neverPush": ["workflow", "subagent"] },
+          "hintChars": 0, "source": "子代理探针 01:23Z（T2 命中但库内无对应工具 → 无命中总览；模型直接拼接返回 abcdef，符合预期）"
+        }
+      ]
+    },
+    {
+      "id": "S8",
+      "text": "帮我把 'abc' 转成大写",
+      "type": "pos",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["format_text"], "neverPush": ["concat_text", "batch_transform"] },
+      "note": "第二轮新增样本（2026-08-16 扩库时入库）：格式化类，落点 format_text。",
+      "runs": []
+    },
+    {
+      "id": "S9",
+      "text": "把这三个文件批量重命名",
+      "type": "pos",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["batch_transform"], "neverPush": ["echo"] },
+      "note": "第二轮新增样本（2026-08-16 扩库时入库）：批量类，落点 batch_transform。",
+      "runs": []
+    },
+    {
+      "id": "S10",
+      "text": "帮我把 'abc' 和 'def' 拼接一下并转成大写",
+      "type": "pos",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["concat_text", "format_text"], "neverPush": ["batch_transform"] },
+      "note": "第二轮新增样本（2026-08-16 扩库时入库）：复合任务，双落点。",
+      "runs": []
+    },
+    {
+      "id": "S7",
+      "text": "那你也更新一下，明天那边会话就按照顺序来走",
+      "type": "pos",
+      "expected": "T3",
+      "groundTruth": { "shouldUse": [], "neverPush": [] },
+      "note": "已观测数据点（2026-08-15 定稿时记录）：'更新'未入 B 词表 → 原判 none（漏触发）；2026-08-16 已补入 B 词表 → 修正预期 T3（B 命中、无载体 → 软层兜底）。",
+      "runs": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "dsh-capability-index",
+  "version": "0.1.0",
+  "description": "Pre-flight plugin-library check for DSH agents: per-step trigger-table hints injected into the runtime-context snapshot, so suitable plugins get used predictably instead of opportunistically",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

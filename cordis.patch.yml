@@ -1,0 +1,14 @@
+# dsh-capability-index bundle patch — one insert over the profile's composed
+# entry list. `dsh plugin --profile <name> add <this package>` reconciles the
+# package into `dsh.profile.bundles`; `dsh --profile <name> --dump-config`
+# then shows this row in the composed tree.
+#
+# 按需关闭（会话/部署级开关见 README「启用与开关」）：
+#   - insert:
+#       - id: capability-index
+#         name: 'dsh-capability-index'
+#         disabled: true
+- insert:
+    - id: capability-index
+      name: 'dsh-capability-index'
+      config: {}
