@@ -1,0 +1,29 @@
+{
+  "_comment": "M3 校准工具语料（calibrate.mjs 用）。description 为生产环境 schema 原文（2026-08-25 会话快照逐字核对；个别超长条目取完整前段，已尽量保真）。覆盖 samples.json 全部真值引用工具 + 高频内置工具。扩库/换部署后同步维护本文件。",
+  "_note": "规则层与向量层共用本语料（≈生产 36 工具的子集近似）；新增样本若引用未收录工具会触发显式警告。rankTop 对 description 全文做 token 子串匹配，故描述长度影响规则层排序——务必用原文而非摘要。",
+  "tools": [
+    { "name": "echo", "description": "Echo back the given text. A smoke-test tool proving this plugin row reached the composed tree and registered into the tools registry." },
+    { "name": "concat_text", "description": "Concatenate multiple text pieces into one string, optionally inserting a separator between them." },
+    { "name": "format_text", "description": "Format a text string: change case (upper/lower/title), trim surrounding whitespace, or collapse repeated whitespace." },
+    { "name": "batch_transform", "description": "Apply one transformation to every item of a list: case change, trim, or prefix/suffix injection — for batch operations on many items." },
+    { "name": "read", "description": "Read a UTF-8 text file and return line-numbered content." },
+    { "name": "glob", "description": "Find files whose paths match a glob pattern. Returns matching file paths — never directories — including hidden and ignored files (VCS metadata directories are excluded). Up to 100 paths come back in modification-time order; a larger result returns the first 100 paths in modification-time order, says so, and reports where the complete sorted list was saved." },
+    { "name": "grep", "description": "Search file contents with a ripgrep regular expression. Returns matching lines with line numbers, grouped by file. Returns the first 250 matches inline; a capped result reports where the complete match list was saved. Use read on a matched file when you need surrounding context." },
+    { "name": "write", "description": "Create or fully replace a UTF-8 text file." },
+    { "name": "edit", "description": "Edit an existing UTF-8 text file by replacing literal text." },
+    { "name": "read_image", "description": "Read a PNG/JPEG/WebP/GIF file and return the image itself. Requires the current model to accept image input." },
+    { "name": "pwsh", "description": "Execute a PowerShell command (`pwsh -Command`) and return its stdout/stderr. Each call runs in a fresh pwsh process: no state (cwd, variables, functions) persists between calls. Non-zero exits are reported as exit code markers. Set run_in_background to run in the background: the call returns a job id immediately; read its output with job_output and stop it with job_kill." },
+    { "name": "web_search", "description": "Search the web for current information. It returns an optional answer plus a list of source URLs. Use the returned source snippets when available, and cite the relevant URLs as markdown links." },
+    { "name": "todo_write", "description": "Record and update a structured task list for the current work. Send the ENTIRE list every call. Use it to plan multi-step work and show progress: add one todo per concrete step before you start." },
+    { "name": "job_output", "description": "Read a background job. Stream jobs return only output since the previous read; final-output jobs return their result after settlement. Every response ends with a status marker. Reads are non-blocking unless wait is set true, which waits until the job reaches a terminal status or the timeout expires." },
+    { "name": "job_list", "description": "List your background jobs (running and finished) with their ids, kinds, and statuses." },
+    { "name": "job_kill", "description": "Request cancellation of a running background job by job id. Returns immediately; the job settles as killed once its work actually stops." },
+    { "name": "send_message", "description": "Send a message to a background subagent by its subagent id, continuing the same conversation. It becomes the subagent's next turn: if it is still working, the message waits until its current turn finishes. This call returns no answer from the subagent — only confirmation that the message was delivered." },
+    { "name": "exit_plan_mode", "description": "Use only in plan mode. Present your plan for the user's review and, on approval, leave plan mode. Send the COMPLETE plan as markdown, starting with a heading that names it." },
+    { "name": "ask_user_question", "description": "Ask the user a concise question when you need confirmation, a choice, or missing information before proceeding. Send one or more questions, each with a stable id that will be echoed in the answer." },
+    { "name": "workflow", "description": "Run a JavaScript workflow script that orchestrates subagents at scale. Use this for work that fans out across many independent pieces — an audit over many files, a migration, multi-angle research, adversarial verification of findings — where you write the orchestration as a script instead of delegating turn by turn." },
+    { "name": "subagent", "description": "Delegate a self-contained task to a subagent (a separate agent that works in its own context) to offload focused, independent work — research, a scoped implementation, an analysis — so it does not consume this conversation's context. The subagent returns its result, not its intermediate steps." },
+    { "name": "cordis_inspect_self", "description": "Inspect dynamic Cordis objects owned by the current Session at increasing levels of detail. With no IDs, list only Plugin summaries. This Tool is read-only: it neither executes code nor changes version pointers." },
+    { "name": "cordis_undefine", "description": "Permanently remove a dynamic Plugin owned by the current Session. If it is running or awaiting approval, first stop it and cancel the request, then delete every Package, grant, and version pointer." }
+  ]
+}

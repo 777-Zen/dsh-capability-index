@@ -1,0 +1,1556 @@
+{
+  "generatedAt": "2026-08-26T03:39:53.684Z",
+  "model": "Xenova/bge-small-zh-v1.5 q8",
+  "corpusSize": 23,
+  "sampleCount": 15,
+  "baseThreshold": 0.58,
+  "gateConfig": {
+    "enabled": true,
+    "hardSim": 0.62,
+    "softSim": 0.5,
+    "demoteFactor": 0.5
+  },
+  "baseMetrics": {
+    "threshold": 0.58,
+    "posRecall": 0.714,
+    "posN": 7,
+    "negNoise": 2,
+    "negN": 8,
+    "violations": 0,
+    "kfViolations": 1,
+    "advisory": 1,
+    "warnedHits": 1,
+    "blockedTotal": 0,
+    "warnedTotal": 5
+  },
+  "noGateBaseline": {
+    "posRecall": 0.714,
+    "posN": 7,
+    "negNoise": 2,
+    "negN": 8,
+    "violations": 0,
+    "kfViolations": 2,
+    "advisory": 1,
+    "warnedHits": 0,
+    "blockedTotal": 0,
+    "warnedTotal": 0
+  },
+  "gateSweep": [
+    {
+      "hardSim": 0.55,
+      "softSim": 0.35,
+      "posRecall": 0.643,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 0,
+      "blockedTotal": 5,
+      "warnedTotal": 6,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.55,
+      "softSim": 0.4,
+      "posRecall": 0.643,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 0,
+      "blockedTotal": 5,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.55,
+      "softSim": 0.45,
+      "posRecall": 0.643,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 0,
+      "blockedTotal": 5,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.55,
+      "softSim": 0.5,
+      "posRecall": 0.643,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 0,
+      "blockedTotal": 5,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.6,
+      "softSim": 0.35,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 1,
+      "warnedTotal": 8,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.6,
+      "softSim": 0.4,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 1,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.6,
+      "softSim": 0.45,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 1,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.6,
+      "softSim": 0.5,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 1,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.6,
+      "softSim": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 1,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.65,
+      "softSim": 0.35,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 8,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.65,
+      "softSim": 0.4,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.65,
+      "softSim": 0.45,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.65,
+      "softSim": 0.5,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.65,
+      "softSim": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.7,
+      "softSim": 0.35,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 8,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.7,
+      "softSim": 0.4,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.7,
+      "softSim": 0.45,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.7,
+      "softSim": 0.5,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.7,
+      "softSim": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.75,
+      "softSim": 0.35,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 8,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.75,
+      "softSim": 0.4,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.75,
+      "softSim": 0.45,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.75,
+      "softSim": 0.5,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.75,
+      "softSim": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.8,
+      "softSim": 0.35,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 8,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.8,
+      "softSim": 0.4,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.8,
+      "softSim": 0.45,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 7,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.8,
+      "softSim": 0.5,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5,
+      "s9Compliant": true
+    },
+    {
+      "hardSim": 0.8,
+      "softSim": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 3,
+      "s9Compliant": true
+    }
+  ],
+  "sweep": [
+    {
+      "threshold": 0.2,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.21,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.22,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.23,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.24,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.25,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.26,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.27,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.28,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.29,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.3,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.31,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.32,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.33,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.34,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.35,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 8,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 8,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.36,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.37,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.38,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.39,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.4,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.41,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.42,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.43,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.44,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 7,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 7,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.45,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 6,
+      "negN": 8,
+      "violations": 3,
+      "kfViolations": 1,
+      "advisory": 6,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.46,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 4,
+      "negN": 8,
+      "violations": 2,
+      "kfViolations": 1,
+      "advisory": 4,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.47,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 4,
+      "negN": 8,
+      "violations": 2,
+      "kfViolations": 1,
+      "advisory": 4,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.48,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 4,
+      "negN": 8,
+      "violations": 2,
+      "kfViolations": 1,
+      "advisory": 4,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.49,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 4,
+      "negN": 8,
+      "violations": 2,
+      "kfViolations": 1,
+      "advisory": 4,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.5,
+      "posRecall": 0.857,
+      "posN": 7,
+      "negNoise": 4,
+      "negN": 8,
+      "violations": 2,
+      "kfViolations": 1,
+      "advisory": 4,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.51,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.52,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.53,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.54,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.55,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.56,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.57,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 1,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.58,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.59,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    },
+    {
+      "threshold": 0.6,
+      "posRecall": 0.714,
+      "posN": 7,
+      "negNoise": 2,
+      "negN": 8,
+      "violations": 0,
+      "kfViolations": 1,
+      "advisory": 1,
+      "warnedHits": 1,
+      "blockedTotal": 0,
+      "warnedTotal": 5
+    }
+  ],
+  "audit": [
+    {
+      "id": "S1",
+      "kind": "T3",
+      "expected": "T3",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "echo",
+          "score": 0.5082
+        },
+        {
+          "name": "ask_user_question",
+          "score": 0.4115
+        },
+        {
+          "name": "job_list",
+          "score": 0.4081
+        },
+        {
+          "name": "format_text",
+          "score": 0.407
+        },
+        {
+          "name": "subagent",
+          "score": 0.4034
+        }
+      ],
+      "correctRank": {
+        "echo": 1
+      },
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "帮我原样回显一句话"
+    },
+    {
+      "id": "S2",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "read",
+          "score": 0.6004
+        },
+        {
+          "name": "write",
+          "score": 0.5974
+        },
+        {
+          "name": "read_image",
+          "score": 0.5903
+        },
+        {
+          "name": "web_search",
+          "score": 0.5669
+        },
+        {
+          "name": "edit",
+          "score": 0.5608
+        }
+      ],
+      "correctRank": {
+        "read": 1,
+        "glob": 12
+      },
+      "hitAtBase": true,
+      "decisionAtBase": "both",
+      "pushedAtBase": [
+        "todo_write",
+        "workflow",
+        "subagent"
+      ],
+      "textHead": "帮我读一下 README.md 然后整理"
+    },
+    {
+      "id": "S3",
+      "kind": "none",
+      "expected": "none",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "write",
+          "score": 0.3579
+        },
+        {
+          "name": "cordis_inspect_self",
+          "score": 0.3553
+        },
+        {
+          "name": "send_message",
+          "score": 0.3517
+        },
+        {
+          "name": "cordis_undefine",
+          "score": 0.3426
+        },
+        {
+          "name": "read_image",
+          "score": 0.3393
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "今天天气不错"
+    },
+    {
+      "id": "S4",
+      "kind": "T3",
+      "expected": "none-or-light",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "format_text",
+          "score": 0.5035
+        },
+        {
+          "name": "todo_write",
+          "score": 0.4759
+        },
+        {
+          "name": "exit_plan_mode",
+          "score": 0.4752
+        },
+        {
+          "name": "write",
+          "score": 0.4532
+        },
+        {
+          "name": "pwsh",
+          "score": 0.4532
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "帮我写一道力扣题"
+    },
+    {
+      "id": "S5",
+      "kind": "T3",
+      "expected": "T3",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "todo_write",
+          "score": 0.4548
+        },
+        {
+          "name": "job_list",
+          "score": 0.4267
+        },
+        {
+          "name": "exit_plan_mode",
+          "score": 0.426
+        },
+        {
+          "name": "format_text",
+          "score": 0.4178
+        },
+        {
+          "name": "read_image",
+          "score": 0.4142
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "我想做个大项目"
+    },
+    {
+      "id": "S6",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "concat_text",
+          "score": 0.5738
+        },
+        {
+          "name": "subagent",
+          "score": 0.5518
+        },
+        {
+          "name": "job_list",
+          "score": 0.5422
+        },
+        {
+          "name": "grep",
+          "score": 0.5409
+        },
+        {
+          "name": "todo_write",
+          "score": 0.5401
+        }
+      ],
+      "correctRank": {
+        "concat_text": 1
+      },
+      "hitAtBase": false,
+      "decisionAtBase": "rule-only",
+      "pushedAtBase": [
+        "concat_text",
+        "cordis_undefine"
+      ],
+      "textHead": "把 'abc' 和 'def' 拼接一下"
+    },
+    {
+      "id": "S8",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "format_text",
+          "score": 0.6194
+        },
+        {
+          "name": "write",
+          "score": 0.5409
+        },
+        {
+          "name": "job_list",
+          "score": 0.5345
+        },
+        {
+          "name": "read_image",
+          "score": 0.5277
+        },
+        {
+          "name": "todo_write",
+          "score": 0.5249
+        }
+      ],
+      "correctRank": {
+        "format_text": 1
+      },
+      "hitAtBase": true,
+      "decisionAtBase": "both",
+      "pushedAtBase": [
+        "write",
+        "edit",
+        "format_text"
+      ],
+      "textHead": "帮我把 'abc' 转成大写"
+    },
+    {
+      "id": "S9",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": true,
+      "simTop5": [
+        {
+          "name": "batch_transform",
+          "score": 0.5032
+        },
+        {
+          "name": "echo",
+          "score": 0.4712
+        },
+        {
+          "name": "format_text",
+          "score": 0.4592
+        },
+        {
+          "name": "grep",
+          "score": 0.4509
+        },
+        {
+          "name": "glob",
+          "score": 0.4373
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "rule-only",
+      "pushedAtBase": [
+        "read",
+        "glob",
+        "batch_transform"
+      ],
+      "textHead": "把这三个文件批量重命名"
+    },
+    {
+      "id": "S10",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "format_text",
+          "score": 0.6051
+        },
+        {
+          "name": "concat_text",
+          "score": 0.5674
+        },
+        {
+          "name": "grep",
+          "score": 0.5515
+        },
+        {
+          "name": "job_list",
+          "score": 0.5463
+        },
+        {
+          "name": "todo_write",
+          "score": 0.5443
+        }
+      ],
+      "correctRank": {
+        "concat_text": 2,
+        "format_text": 1
+      },
+      "hitAtBase": true,
+      "decisionAtBase": "both",
+      "pushedAtBase": [
+        "write",
+        "concat_text",
+        "format_text"
+      ],
+      "textHead": "帮我把 'abc' 和 'def' 拼接一下并转成大写"
+    },
+    {
+      "id": "S7",
+      "kind": "T3",
+      "expected": "T3",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "job_list",
+          "score": 0.5076
+        },
+        {
+          "name": "todo_write",
+          "score": 0.5034
+        },
+        {
+          "name": "send_message",
+          "score": 0.4855
+        },
+        {
+          "name": "exit_plan_mode",
+          "score": 0.4756
+        },
+        {
+          "name": "web_search",
+          "score": 0.4718
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "那你也更新一下，明天那边会话就按照顺序来走"
+    },
+    {
+      "id": "S11",
+      "kind": "none",
+      "expected": "none",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "concat_text",
+          "score": 0.7169
+        },
+        {
+          "name": "ask_user_question",
+          "score": 0.6215
+        },
+        {
+          "name": "cordis_inspect_self",
+          "score": 0.5826
+        },
+        {
+          "name": "read",
+          "score": 0.5804
+        },
+        {
+          "name": "send_message",
+          "score": 0.5799
+        }
+      ],
+      "correctRank": {
+        "concat_text": 1
+      },
+      "hitAtBase": true,
+      "decisionAtBase": "semantic-only",
+      "pushedAtBase": [
+        "concat_text",
+        "ask_user_question",
+        "cordis_inspect_self"
+      ],
+      "textHead": "concatenate these two strings please"
+    },
+    {
+      "id": "S12",
+      "kind": "T2",
+      "expected": "T2",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "concat_text",
+          "score": 0.6793
+        },
+        {
+          "name": "format_text",
+          "score": 0.674
+        },
+        {
+          "name": "send_message",
+          "score": 0.6477
+        },
+        {
+          "name": "grep",
+          "score": 0.626
+        },
+        {
+          "name": "cordis_undefine",
+          "score": 0.6161
+        }
+      ],
+      "correctRank": {
+        "concat_text": 1,
+        "format_text": 2
+      },
+      "hitAtBase": true,
+      "decisionAtBase": "both",
+      "pushedAtBase": [
+        "concat_text",
+        "todo_write",
+        "format_text"
+      ],
+      "textHead": "把 'abc' 和 'def' 拼接一下。帮我把 'abc' 转成大写。conc"
+    },
+    {
+      "id": "S13",
+      "kind": "T3",
+      "expected": "none-or-light",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "job_list",
+          "score": 0.4488
+        },
+        {
+          "name": "todo_write",
+          "score": 0.4484
+        },
+        {
+          "name": "job_output",
+          "score": 0.4447
+        },
+        {
+          "name": "job_kill",
+          "score": 0.4419
+        },
+        {
+          "name": "cordis_undefine",
+          "score": 0.4382
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "？暂停了吗？我需要做什么"
+    },
+    {
+      "id": "S14",
+      "kind": "T2",
+      "expected": "none-or-light",
+      "knownFail": true,
+      "simTop5": [
+        {
+          "name": "send_message",
+          "score": 0.6364
+        },
+        {
+          "name": "subagent",
+          "score": 0.6359
+        },
+        {
+          "name": "job_output",
+          "score": 0.6085
+        },
+        {
+          "name": "todo_write",
+          "score": 0.603
+        },
+        {
+          "name": "job_list",
+          "score": 0.5987
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": true,
+      "decisionAtBase": "both",
+      "pushedAtBase": [
+        "write",
+        "edit",
+        "read"
+      ],
+      "textHead": "但是我有个问题想说的是，后面其实你这个对话我就基本结束了，算是一个阶段结束（保持"
+    },
+    {
+      "id": "S15",
+      "kind": "T3",
+      "expected": "none-or-light",
+      "knownFail": false,
+      "simTop5": [
+        {
+          "name": "send_message",
+          "score": 0.4568
+        },
+        {
+          "name": "job_output",
+          "score": 0.4558
+        },
+        {
+          "name": "job_kill",
+          "score": 0.4481
+        },
+        {
+          "name": "job_list",
+          "score": 0.4328
+        },
+        {
+          "name": "cordis_undefine",
+          "score": 0.4291
+        }
+      ],
+      "correctRank": {},
+      "hitAtBase": false,
+      "decisionAtBase": "none",
+      "pushedAtBase": [],
+      "textHead": "有个什么运行失败这是终止了吗？"
+    }
+  ],
+  "suggestion": "候选最优 0.58（召回 0.714/噪音 2/8）；是否调整由人工拍板后改 trigger-table.js"
+}

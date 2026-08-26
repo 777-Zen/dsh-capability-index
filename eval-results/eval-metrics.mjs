@@ -1,4 +1,4 @@
-﻿/**
+/**
  * dsh-capability-index —— 实验评分脚本（阶段二，零依赖纯 ESM）。
  *
  * 用法：node eval-metrics.mjs [--json]
@@ -14,7 +14,7 @@
 
 import { readFileSync } from 'node:fs'
 
-const PATH = new URL('./samples.json', import.meta.url)
+const PATH = new URL('./eval-results/samples.json', import.meta.url)
 const json = JSON.parse(readFileSync(PATH, 'utf8'))
 const samples = json.samples
 

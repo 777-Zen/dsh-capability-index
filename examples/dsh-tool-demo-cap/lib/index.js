@@ -70,7 +70,9 @@ export const DECLARATIONS = [
     tool: 'batch_transform',
     keywords: ['批量', '逐个', '列表', '每个', 'batch'],
     use_when: '用户要求对一组/列表项批量做同一变换（如统一加前缀、统一改大小写）',
-    not_for: '单条文本加工（用 format_text）、两段拼接（用 concat_text）',
+    // M3 校准点（S9 灰色地带，2026-08-25）：补真实文件系统操作边界——
+    // "把这三个文件批量重命名"语义像"批量"，但本工具只处理内存字符串
+    not_for: '单条文本加工（用 format_text）、两段拼接（用 concat_text）、文件重命名/移动/删除等真实文件系统操作',
     min_complexity: 'low',
     lang: 'zh',
   },

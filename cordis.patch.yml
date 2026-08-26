@@ -8,6 +8,29 @@
 #       - id: capability-index
 #         name: 'dsh-capability-index'
 #         disabled: true
+#
+# M2 可选配置（config 字段，全部有默认；语义引擎就绪前自动降级纯规则）：
+#   - insert:
+#       - id: capability-index
+#         name: 'dsh-capability-index'
+#         config:
+#           embed:
+#             enabled: true                  # false = 纯规则（v0.1 行为）
+#             model: 'Xenova/bge-small-zh-v1.5'
+#             dtype: 'q8'                    # 量化档位（模型权重约 24MB）
+#             cacheDir: 'D:\\...'            # 权重缓存（默认 DSH_HOME/.cache/dsh-capability-index，不写 C 盘）
+#             endpoint: 'https://hf-mirror.com'  # 权重下载端点（HF 直连超时环境用镜像）
+#             threshold: 0.35                # 向量命中阈值（M3 用数据校准）
+#           decisionLog:                     # M3 数据基建（2026-08-25 拍板）：决策日志
+#             enabled: true                  # false = 关闭
+#             dir: 'D:\\...'                 # 默认 DSH_HOME/.cache/dsh-capability-index；
+#                                            # 文件 = <dir>/decisions.jsonl，纯本地无网络，
+#                                            # 写入失败自动静默停用，绝不影响注入。
+#           notForGate:                      # M3 not_for 守门闸（plan-notfor-gate，2026-08-26）
+#             enabled: true                  # false = 整体旁路（not_for 退回纯展示文案）
+#             hardSim: 0.62                  # 硬拦阈值：关键词命中 ∧ 嵌入≥此值 → 候选移除
+#             softSim: 0.50                  # 软警示下限：恰一信号命中或嵌入落 [soft,hard) → 降位+警示行
+#             demoteFactor: 0.5              # 软处理分数折减（窗口内降位，不动成员资格）
 - insert:
     - id: capability-index
       name: 'dsh-capability-index'

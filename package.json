@@ -1,6 +1,6 @@
 {
   "name": "dsh-capability-index",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pre-flight plugin-library check for DSH agents: per-step trigger-table hints injected into the runtime-context snapshot, so suitable plugins get used predictably instead of opportunistically",
   "type": "module",
   "main": "lib/index.js",
@@ -10,8 +10,13 @@
   },
   "files": [
     "lib",
+    "docs",
     "cordis.patch.yml"
   ],
+  "scripts": {
+    "verify": "node ./eval-results/verify.mjs",
+    "simulate": "node ./eval-results/simulate.mjs"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"

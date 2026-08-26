@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "updated": "2026-08-16",
+  "updated": "2026-08-25",
   "note": "活样本库。runs 逐条追加（含日期、消息原文、实际判定、正确判定、提示块推了谁、实际调了谁）。真值信 tool/call 日志与快照，不信总结。",
   "samples": [
     {
@@ -133,6 +133,11 @@
           "group": "C", "round": 2, "date": "2026-08-16",
           "judgment": "T2", "pushed": ["concat_text", "pwsh", "cordis_inspect_query"], "used": ["concat_text"],
           "hintChars": 0, "source": "用户主会话实测（快照：Top-1 concat_text 带适用/不适用声明；模型真实调用 concat_text → abcdef。B 组同消息零工具 → 提示改变行为 ✓）"
+        },
+        {
+          "group": "C", "round": 4, "date": "2026-08-25",
+          "judgment": "T2", "pushed": ["concat_text", "pwsh", "cordis_inspect_query"], "used": ["concat_text"],
+          "hintChars": 0, "source": "规模优化轮生产回归确认（重启后快照：Top-3 与 R2 逐字一致——concat_text 带声明居首；视图缓存路径零行为回归 ✓；模型调用 concat_text → abcdef，echo-cap-calls.log 有铁证）"
         }
       ]
     },
@@ -161,8 +166,8 @@
       "text": "把这三个文件批量重命名",
       "type": "pos",
       "expected": "T2",
-      "groundTruth": { "shouldUse": ["batch_transform"], "neverPush": ["echo"] },
-      "note": "第二轮新增样本（2026-08-16 扩库时入库）：批量类，落点 batch_transform。2026-08-16 R2 实测修正：batch_transform 是字符串列表变换，对真实文件重命名不适用 → 该样本 R2 真值应为 []（模型澄清/用 pwsh 属正确判断）。",
+      "groundTruth": { "shouldUse": [], "neverPush": ["batch_transform", "echo"] },
+      "note": "第二轮新增样本（2026-08-16 扩库时入库）：批量类。真值口径统一（2026-08-25 用户拍板）：batch_transform 是字符串列表变换，对真实文件重命名不适用（其声明 not_for 已列真实文件系统操作）→ shouldUse 定为 [] 且 batch_transform 入 neverPush。2026-08-26 守门闸生产验证通过（快照：batch_transform 降位末位带『⚠️ 声明提示』；decisions.jsonl 09:53:11Z 行 gateWarned:[batch_transform]）→ **knownFail 标记已摘除**：现行为 = 软警示合规（plan §4.5『消失或带警示行』口径），verify A 组随 simulate 同步为 gate-aware。",
       "runs": [
         {
           "group": "B", "round": 2, "date": "2026-08-16",
@@ -206,6 +211,103 @@
       "groundTruth": { "shouldUse": [], "neverPush": [] },
       "note": "已观测数据点（2026-08-15 定稿时记录）：'更新'未入 B 词表 → 原判 none（漏触发）；2026-08-16 已补入 B 词表 → 修正预期 T3（B 命中、无载体 → 软层兜底）。",
       "runs": []
+    },
+    {
+      "id": "S11",
+      "text": "concatenate these two strings please",
+      "type": "pos",
+      "expected": "none",
+      "groundTruth": { "shouldUse": ["concat_text"], "neverPush": ["echo", "read"] },
+      "note": "M2 英文样本（2026-08-25 入库）：规则词表中文起步 → 规则层判定 none（软层总览）；向量层应命中 concat_text（e2e 实测 0.751）。expected 字段为规则层口径；向量层预期见 M3 样本扩展。M2 修复前（T2 闸门）插件进程内英文消息仅软层总览——该行为已在 verify 修复为 semantic-only。2026-08-26 生产实测补录：semantic-only 推 concat_text#1（0.7169，与离线 0.717 吻合），见 runs。",
+      "runs": [
+        {
+          "group": "C", "round": 3, "date": "2026-08-25",
+          "judgment": "none", "pushed": [], "used": [],
+          "hintChars": 0, "source": "用户主会话实测（M2 修复前代码：T2 闸门挡住语义路径 → 软层总览；修复后离线 48/48 + e2e semantic-only，待重启复测）"
+        },
+        {
+          "group": "C", "round": 4, "date": "2026-08-26",
+          "judgment": "none", "pushed": ["concat_text", "ask_user_question", "cordis_define"], "used": [],
+          "hintChars": 0, "source": "用户主会话实测（M2 修复后生产确认 ✓：decisions.jsonl 10:00:26Z 行 decision=semantic-only/hit=true，semTop concat_text 0.7169#1/ask_user_question 0.6215/cordis_define 0.6142——与离线 calibrate 审计 0.717/0.621/0.583 吻合；10:00:11Z 首步为纯规则降级行，同消息 15s 后语义就绪自愈，预取时序设计生产实例）"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "text": "把 'abc' 和 'def' 拼接一下。帮我把 'abc' 转成大写。concatenate these two strings please。今天天气不错。",
+      "type": "mid",
+      "expected": "T2",
+      "groundTruth": { "shouldUse": ["concat_text", "format_text"], "neverPush": ["echo"] },
+      "note": "M2 烟测样本（2026-08-25）：四条消息合并一条（用户一口气发）→ 多分句 T2；Top-3 推送 concat_text/format_text/todo_write（todo_write 为降级条目噪音，M3 校准点）。",
+      "runs": [
+        {
+          "group": "C", "round": 3, "date": "2026-08-25",
+          "judgment": "T2", "pushed": ["concat_text", "format_text", "todo_write"], "used": [],
+          "hintChars": 0, "source": "用户主会话实测（快照：concat_text/format_text 带完整声明渲染，todo_write 降级条目；模型未实际调用工具——消息为测试性质）"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "text": "？暂停了吗？我需要做什么",
+      "type": "neg",
+      "expected": "none-or-light",
+      "groundTruth": { "shouldUse": [], "neverPush": ["job_kill"] },
+      "note": "M3 观察模式首个样本（2026-08-25）：会话元交流，非任务。规则层 T3（做→B、无 C/D/F）；向量层 hit=true → semantic-only 推 job_list/job_kill/job_output（暂停≈kill 的字面相似）。机制按 D14 设计工作（偏硬推），但语境上属轻度过触发——短口语消息的阈值边界是 M3 阈值校准的直接证据。模型未调用任何工具（提示无害但构成噪音）。",
+      "runs": [
+        {
+          "group": "C", "round": 4, "date": "2026-08-25",
+          "judgment": "T3", "pushed": ["job_list", "job_kill", "job_output"], "used": [],
+          "hintChars": 0, "source": "用户主会话 runtime-context 快照（语义匹配 advisory：job_list、job_kill、job_output，置信度中等标注）"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "text": "但是我有个问题想说的是，后面其实你这个对话我就基本结束了，算是一个阶段结束（保持上下文的占用，所以我会开新的会话）所以你说你要收集数据我有点好奇如果换会话了你怎么办还是你在交接文件里已经写了",
+      "type": "neg",
+      "expected": "none-or-light",
+      "knownFail": true,
+      "groundTruth": { "shouldUse": [], "neverPush": ["write", "edit", "pwsh", "job_output", "send_message", "exit_plan_mode"] },
+      "note": "带内第三层首次生产触发（smoke-test §2 conflict 项确认 ✓），但本样本两层同时误命中：规则层 T2（'写了'→B字 + '交接文件里'裸词'文件'→C载体，probe/repro-s14.mjs 复现 kind=T2/c=true）→ 推 write/edit/pwsh；向量层 hit（结束≈end、开新会话≈send_message 字面相似）→ 候选无交集 → conflict advisory。对纯元交流双层皆误 = M3 双重校准证据：attachWords 裸名词（文件/数据/文档）需上下文约束或降权；短口语语义阈值偏松。knownFail=true（2026-08-25 拍板）：预期为正确判定而非现行为，M3 校准（attachWords 约束 + 阈值）完成前 verify/simulate 对本样本只报告不判败。",
+      "runs": [
+        {
+          "group": "C", "round": 4, "date": "2026-08-25",
+          "judgment": "T2", "pushed": ["write", "edit", "pwsh", "job_output", "send_message", "exit_plan_mode"], "used": [],
+          "hintChars": 0, "source": "用户主会话 runtime-context 快照（conflict advisory：候选工具 write/edit/pwsh + job_output/send_message/exit_plan_mode，供终判文案渲染正确）"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "text": "有个什么运行失败这是终止了吗？",
+      "type": "neg",
+      "expected": "none-or-light",
+      "groundTruth": { "shouldUse": [], "neverPush": ["job_kill"] },
+      "note": "M3 观察模式样本（2026-08-25，会话中自然发生）：会话元交流（用户询问界面上的运行失败提示），非任务。规则层 T3；向量层 hit=true → semantic-only 推 job_output/job_kill/send_message（'运行失败/终止'≈job 失败/kill 字面相似）。S13 同型第二次观测——短口语元交流的 0.35 阈值偏松证据链 +1；模型未调用任何工具，无害但构成噪音。",
+      "runs": [
+        {
+          "group": "C", "round": 4, "date": "2026-08-25",
+          "judgment": "T3", "pushed": ["job_output", "job_kill", "send_message"], "used": [],
+          "hintChars": 0, "source": "用户主会话 runtime-context 快照（语义匹配 advisory：job_output、job_kill、send_message，置信度中等标注）"
+        }
+      ]
+    },
+    {
+      "id": "S16",
+      "text": "？暂停了吗？我需要做什么，然后你的意思就是这一阶段的更新就完事了是吗？",
+      "type": "neg",
+      "expected": "none-or-light",
+      "knownFail": true,
+      "groundTruth": { "shouldUse": [], "neverPush": ["todo_write", "workflow", "subagent"] },
+      "note": "M3 观察模式样本（2026-08-26，守门闸生产验证会话中自然发生）：引用任务句的元交流 + '然后'分句。规则层 D 信号误判：'做'→B、'然后'→分隔符使分句数≥2且各含动词（我需要做什么 / 你的意思就是…完事了是吗）→ d=true → T2 → 推 todo_write/workflow/subagent（boostOrg 双计）。同族第二次观测（m3 时 S16 候选未入库防过拟合，证据+1 后入库挂账）：与 S14 同类属规则层分句/裸词过度敏感的元交流误触，转绿路径并入校准点 #2（规则层对元交流的上下文约束），与守门闸无关。knownFail=true 挂账，校准后摘。",
+      "runs": [
+        {
+          "group": "C", "round": 4, "date": "2026-08-26",
+          "judgment": "T2", "pushed": ["todo_write", "workflow", "subagent"], "used": [],
+          "hintChars": 0, "source": "用户主会话 runtime-context 快照（规则层 T2 硬层提示：todo_write/workflow/subagent 全为降级条目）；decisions.jsonl 09:57:59Z 行 pushed 一致，无语义字段（该轮生产语义引擎未在线，见 notes）"
+        }
+      ]
     }
   ]
 }

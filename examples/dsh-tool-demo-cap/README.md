@@ -12,7 +12,7 @@
 | `batch_transform` | 批量操作 | 对列表项统一变换（大小写/trim/前缀/后缀） | 同上 |
 
 能力声明按 dsh-capability-index 的
-[能力声明约定](../../README.md#能力声明约定capabilities)
+[能力声明约定](../dsh-capability-index/README.md#能力声明约定capabilities)
 经 `ctx.provide('capabilityIndex.declarations', …)` 发布（v0 单聚合器约定：
 每个组合只应有一个插件提供该服务，本样例即该形态的演示）。
 
@@ -22,7 +22,7 @@
 ## 验证流水线
 
 ```powershell
-# 安装到 dsh（<path> 换成本样例插件目录的绝对路径，仓库内即 examples\dsh-tool-demo-cap）
+# 安装到 dsh（<path> 换成本样例插件目录的绝对路径）
 pnpm dsh plugin --profile web add <path>\dsh-tool-demo-cap
 pnpm dsh --profile web --dump-config | Select-String tool-demo-cap
 # 重启 web 应用；会话里发"帮我原样回显一句话"类消息，
